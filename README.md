@@ -1,4 +1,3 @@
-# cpusm2
 # cpusm
 cpu statistics monitor for linux cli
 
