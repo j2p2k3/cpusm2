@@ -655,7 +655,7 @@ double getproctime(double *cpuspin, double cntsum, int pdiv)
 }
 void print_app_usage(void)
 {
-	const char *appusage[63];
+	const char *appusage[66];
 	appusage[0] = "cpusm [option]<value>...[option]<value>      \n";
 	appusage[1] = "_______________________________________________________________________________________________________________\n";
 	appusage[2] = "command-line options [* default]             \n\n";
@@ -666,7 +666,7 @@ void print_app_usage(void)
 	appusage[7] = "-e || --slip: deferal interval for process intensive statistics acquisition [frequency, temperature, rtt] [slip>=1, *4]\n";
 	appusage[8] = "-f || --file: <filename>: log destination    \n";
 	appusage[9] = "-g || --coefficient: statistics sampling interval coefficient [g * t, *1]\n";
-	appusage[10] = "-h || --help: execution assistance          \n";
+	appusage[10] = "-h || --help: application usage/execution assistance          \n";
 	appusage[11] = "-i || --shortmode: cpusm start information mode [*0 - normal, 1 - abbreviated] \n";
 	appusage[12] = "-j || --step: cpusm statistics output step interval [1/j * r * u] \n";
 	appusage[13] = "-k || --mode: cpusm statistics output mode [*0 - uni, 1 - multi] \n";
@@ -699,26 +699,29 @@ void print_app_usage(void)
 	appusage[40] = "<c>: switch stdout colour                   \n";
 	appusage[41] = "<q>: quit cpusm                             \n";
 	appusage[42] = "<j>: enable/disable statistics step display \n";
-	appusage[43] = "<k>: switch cpu utilization calculation     \n";
-	appusage[44] = "     - pcpu: full process including all threads\n";
-	appusage[45] = "     - pcpu.0: parent process               \n";
-	appusage[46] = "     - pcpu.1: comand and control thread    \n";
-	appusage[47] = "     - pcpu.2: data acquisition thread      \n";
-	appusage[48] = "     - pcpu.3: network rtt thread           \n";
-	appusage[49] = "<l>: enable/disable colour-mode focus scanning \n";
-	appusage[50] = "<m>: enable/switch colour-mode focus        \n";
-	appusage[51] = "<n>: switch 'runtime' statistic [running-time*, remaining-time]\n";
-	appusage[52] = "<s>: display cpusm interim summary statistics \n";
-	appusage[53] = "<v>: switch terminal display width          \n";
-	appusage[54] = "<x>: enable/disable periodic header printing \n";
-	appusage[55] = "<z>: restart cpusm                          \n";
-	appusage[56] = "<=>: display interim cpusm min/max/avg statistics\n";
-	appusage[57] = "</>: switch terminal scrolling mode [fixed-line/scrolling]\n";
-	appusage[58] = "<.>: display column headings                \n";
-	appusage[59] = "<`>: switch pcpu accounting [per-core/aggregate]\n";
-	appusage[60] = "<,>: enable/diable stdout [file logging-mode]]\n";
-	appusage[61] = "<1>: enable/disable precise time-tracking   \n";
-	appusage[62] = "<SPACE>: switch display mode [cpu.kernel/cpu.core/core.frequency/thermal/network]\n\n";
+	appusage[43] = "<k>: enable/disable variable colour-mode focus scanning \n";
+	appusage[44] = "     - <+>: increase focus scanning interval \n";
+	appusage[45] = "     - <->: descrease focus scanning interval\n";
+	appusage[46] = "<l>: enable/disable fixed colour-mode focus scanning \n";
+	appusage[47] = "<m>: enable/switch colour-mode focus        \n";
+	appusage[48] = "<n>: switch 'runtime' statistic [running-time*, remaining-time]\n";
+	appusage[49] = "<p>: switch cpu utilization calculation     \n";
+	appusage[50] = "     - pcpu: full process including all threads\n";
+	appusage[51] = "     - pcpu.0: parent process               \n";
+	appusage[52] = "     - pcpu.1: comand and control thread    \n";
+	appusage[53] = "     - pcpu.2: data acquisition thread      \n";
+	appusage[54] = "     - pcpu.3: network rtt thread           \n";
+	appusage[55] = "<s>: display cpusm interim summary statistics \n";
+	appusage[56] = "<v>: switch terminal display width          \n";
+	appusage[57] = "<x>: enable/disable periodic header printing \n";
+	appusage[58] = "<z>: restart cpusm                          \n";
+	appusage[59] = "<=>: display interim cpusm min/max/avg statistics\n";
+	appusage[60] = "</>: switch terminal scrolling mode [fixed-line/scrolling]\n";
+	appusage[61] = "<.>: display column headings                \n";
+	appusage[62] = "<`>: switch pcpu accounting [per-core/aggregate]\n";
+	appusage[63] = "<,>: enable/diable stdout [file logging-mode]]\n";
+	appusage[64] = "<1>: enable/disable precise time-tracking   \n";
+	appusage[65] = "<SPACE>: switch display mode [cpu.kernel/cpu.core/core.frequency/thermal/network]\n\n";
 	
 	keyboard_attr();
 	struct winsize w;
@@ -728,7 +731,7 @@ void print_app_usage(void)
 	int fd_stdin = (fileno(stdin));
 	FD_ZERO(&readfds);
 	FD_SET(fileno(stdin), &readfds);
-	for ( int i=0;i<63;i++ ) {
+	for ( int i=0;i<66;i++ ) {
 		if ( i != 0 && i % (w.ws_row-4) == 0 ) {
 			pagecount++;
 			FD_SET(fileno(stdin), &readfds);
