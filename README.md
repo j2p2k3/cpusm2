@@ -15,7 +15,8 @@ cpusm build instructions:
 	make
 	sudo make install
   
-	cpusm usage:
+cpusm usage:
+
 	cpusm --help
 
 	cpusm [option]<value>...[option]<value>      
