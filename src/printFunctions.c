@@ -576,6 +576,7 @@ void print_header(psheader psh)
 	for ( int i=0;i<(14+onewhich)*7;i++) {
 		printcc(" ", 4, psh.colour);
 	}
+	printf(DEFCOLOR);
 	printf("\n");
 	printcc("", 4, psh.colour);
 	printcc(" schd:", 4, psh.colour);
@@ -594,6 +595,7 @@ void print_header(psheader psh)
 	for ( int i=0;i<(14+onewhich)*7;i++) {
 		printcc(" ", 4, psh.colour);
 	}
+	printf(DEFCOLOR);
 	printf("\n");
 	for (int i=0;i<37;i++ ) {
 		printcc("\u2500", 1, psh.colour);
