@@ -578,6 +578,7 @@ void print_header(psheader psh)
 	}
 	printf(DEFCOLOR);
 	printf("\n");
+	printf(HEADER);
 	printcc("", 4, psh.colour);
 	printcc(" schd:", 4, psh.colour);
 	printccc(schd0, 4, 4, psh.colour);
