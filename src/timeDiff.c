@@ -152,10 +152,12 @@ void time_diff(timeD xx, double rStat[], int em[], struct timespec exestart, str
 			for ( int i=headerTitleSize;i<rowwidth-1;i++ ) {
 				printcc(" ", 4, xx.colour);
 			}
+			printf(DEFAULT);
 			printf("\n");
 			for ( int i=0;i<rowwidth-1;i++ ) {
 				printcc(" ", 4, xx.colour);
 			}
+			printf(DEFAULT);
 			printf("\n\n");
 			printcc("\u250C\u2500", 1, xx.colour);
 			printcc("SYSTEM.ATTRIBUTES", 2, xx.colour);
