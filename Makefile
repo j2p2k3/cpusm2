@@ -1,7 +1,7 @@
 ROOT=.
 CC=gcc
 CFLAGS ?= -Wall
-CCFLAGS=$(CFLAGS) -I ./include -lm -pthread -std=gnu99
+CCFLAGS=$(CFLAGS) -fcommon -I ./include -lm -pthread -std=gnu99
 LIBDIR=lib
 OBJDIR=obj
 SRCDIR=src
