@@ -209,6 +209,7 @@ int getthermalzones(int *gtz, int *vtz, int *ptz);
 int getfreqlimits( double *freqmin, double *freqmax, double *maxfreq);
 
 //utility functionss
+int screenHeight(void);
 int whicher(psheader psh);
 int rng(const int nMin, const int nMax, const int  nN);
 
