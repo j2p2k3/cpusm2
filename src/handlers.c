@@ -975,3 +975,13 @@ int packetunpack(char *recvtekcap, int len, uint16_t icmpid[], double rStat[], s
 		return -1;
 	}
 }
+int screenHeight(void)
+{
+	struct winsize w;
+	w = termsize();
+	if (w.ws_row > 9) {
+	    return w.ws_row - 4;
+	}else{
+	    return w.ws_row;
+	}
+}
