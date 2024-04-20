@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	int cpuaffinity = 0;
 	int ival = 0;
 	int op = 0;
-	int em[29] = {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,4,0,1,0,0,0,0,0,0};
+	int em[30] = {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,4,0,1,0,0,0,0,0,0,0};
 	double secs = 0L;
 	double decsecs = 0L;
 	double dur[4] = {0L,0L,0L,0L};
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
           {0, 0, 0, 0}
         };
 		int option_index = 0;
-		op = getopt_long (argc, argv, "a:b:c:d:e:f:g:hi:j:k:l:m:n:o:p:q:r:s:t:u:v:w:x:y:z:#:", long_options, &option_index);
+		op = getopt_long (argc, argv, "a:b:c:d:e:f:g:hi:j:k:l:m:n:o:p:q:r:s:t:u:v:w:x:y:z:#:1:", long_options, &option_index);
 		if (op == -1)
         break;
 		switch (op)
@@ -215,6 +215,13 @@ int main(int argc, char **argv)
 					exit(EXIT_FAILURE);
 				}
 				break;
+			case '1':  //rtt data size
+				em[29] = atoi(optarg);
+				if ( em[29] >= 1473 ) {
+					print_app_usage();
+					exit(EXIT_FAILURE);
+				}
+				break;
 			case '#':  //network device
 				//~ sprintf(dev, "%s", optarg);
 				if ( u == 0 ) {
@@ -226,7 +233,7 @@ int main(int argc, char **argv)
 				}
 				break;
 			case '?':
-				if ( optopt == 'a' || optopt == 'b' || optopt == 'c' || optopt == 'd' || optopt == 'f' || optopt == 'j' || optopt == 'k' || optopt == 'l' || optopt == 'm' || optopt == 'n' || optopt == 'o' || optopt == 'q'  || optopt == 'p' || optopt == 's' || optopt == 't' || optopt == 'u' || optopt == 'v' || optopt == 'w' || optopt == 'x' || optopt == 'y' || optopt == 'z' || optopt == '#' ) {
+				if ( optopt == 'a' || optopt == 'b' || optopt == 'c' || optopt == 'd' || optopt == 'f' || optopt == 'j' || optopt == 'k' || optopt == 'l' || optopt == 'm' || optopt == 'n' || optopt == 'o' || optopt == 'q'  || optopt == 'p' || optopt == 's' || optopt == 't' || optopt == 'u' || optopt == 'v' || optopt == 'w' || optopt == 'x' || optopt == 'y' || optopt == 'z' || optopt == '#' || optopt == '1') {
 					fprintf ( stderr, "execution error [illegal command-line option value]: -%c\n", optopt);
 					print_app_usage();
 					exit(EXIT_FAILURE);
@@ -241,6 +248,7 @@ int main(int argc, char **argv)
 		}
 	}
 	printf("\n");
+//	printf("\n\ndatalength: %d\n\n", em[29]);
 	em[6] = set_ppid(em[3]);
 	struct winsize w;
 	w = termsize();
